@@ -33,7 +33,7 @@ public class CustomerDao {
 				//1.2 获取连接
 				conn = ConnectionFactory.getConn();
 				//3. 创建pstmt对象
-				String sql = "insert into rj12_customer(name,password,age) "
+				String sql = "insert into customer(name,password,age) "
 						+ "values(?,?,?)";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, customer.getName());
@@ -73,7 +73,7 @@ public class CustomerDao {
 				//1.2 获取连接
 				conn = ConnectionFactory.getConn();
 				//3. 创建pstmt对象
-				String sql = "select * from rj12_customer where name = ?";
+				String sql = "select * from customer where name = ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, name);
 				//4. 执行sql
