@@ -55,6 +55,25 @@ public class CustomerDao {
 	 * @param id
 	 */
 	public void deleteById(long id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			try{
+				//1.2 获取连接
+				conn = ConnectionFactory.getConn();
+				//3. 创建pstmt对象
+				String sql = "delete from customer where id = " + id;
+				pstmt = conn.prepareStatement(sql);
+				//4. 执行sql
+				pstmt.executeUpdate();
+				
+			} finally {
+				//6释放资源
+				ConnectionFactory.close(null, pstmt, conn);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
